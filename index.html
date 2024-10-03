@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function validateForm() {
+        const firstName = document.forms[0]["firstName"].value;
+        const lastName = document.forms[0]["lastName"].value;
+        const email = document.forms[0]["email"].value;
+        const mobileNumber = document.forms[0]["number"].value;
+        const pinCode = document.forms[0]["pin"].value;
+
+        // Custom validation for names (allow only letters and spaces)
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(firstName)) {
+          alert("Please enter a valid first name with letters only.");
+          return false;
+        }
+
+        if (!nameRegex.test(lastName)) {
+          alert("Please enter a valid last name with letters only.");
+          return false;
+        }
+
+        // Check mobile number (10 digits)
+        const mobileRegex = /^\d{10}$/;
+        if (!mobileRegex.test(mobileNumber)) {
+          alert("Please enter a valid 10-digit mobile number.");
+          return false;
+        }
+
+        // Check pin code (6 digits)
+        const pinRegex = /^\d{6}$/;
+        if (!pinRegex.test(pinCode)) {
+          alert("Please enter a valid 6-digit pin code.");
+          return false;
+        }
+
+        // If all checks pass
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="bg">
+      <center>
+        <h1><u>STUDENT REGISTRATION FORM</u></h1>
+      </center>
+      <br />
+
+      <div id="form">
+        <form
+          method="get"
+          action="submit.html"
+          onsubmit="return validateForm()"
+        >
+          <table id="table">
+            <tr>
+              <td>FIRST NAME:</td>
+              <td>
+                <input
+                  type="text"
+                  name="firstName"
+                  size="30"
+                  maxlength="30"
+                  placeholder="Enter first name"
+                  pattern="[A-Za-z\s]+"
+                  title="Only letters and spaces are allowed"
+                  required
+                />
+                (max 30 characters A-Z and a-z)
+              </td>
+            </tr>
+            <tr>
+              <td>LAST NAME:</td>
+              <td>
+                <input
+                  type="text"
+                  name="lastName"
+                  size="30"
+                  maxlength="30"
+                  placeholder="Enter last name"
+                  pattern="[A-Za-z\s]+"
+                  title="Only letters and spaces are allowed"
+                  required
+                />
+                (max 30 characters A-Z and a-z)
+              </td>
+            </tr>
+            <tr>
+              <td>DATE OF BIRTH:</td>
+              <td>
+                <input
+                  type="number"
+                  name="day"
+                  size="2"
+                  maxlength="2"
+                  placeholder="Day"
+                  min="1"
+                  max="31"
+                  required
+                />
+                <select name="month" required>
+                  <option value="month">Month</option>
+                  <option value="Jan">Jan</option>
+                  <option value="Feb">Feb</option>
+                  <option value="Mar">Mar</option>
+                  <option value="Apr">Apr</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="Aug">Aug</option>
+                  <option value="Sep">Sep</option>
+                  <option value="Oct">Oct</option>
+                  <option value="Nov">Nov</option>
+                  <option value="Dec">Dec</option>
+                </select>
+                <input
+                  type="number"
+                  name="year"
+                  size="5"
+                  maxlength="4"
+                  placeholder="Year"
+                  min="1991"
+                  max="2005"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>EMAIL ID:</td>
+              <td>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  size="30"
+                  maxlength="100"
+                  placeholder="Enter valid email"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>MOBILE NO:</td>
+              <td>
+                <input
+                  type="tel"
+                  name="number"
+                  size="30"
+                  maxlength="12"
+                  placeholder="Enter Mobile no"
+                  pattern="[0-9]{10}"
+                  title="10 digits number"
+                  required
+                />
+                (10 digits number)
+              </td>
+            </tr>
+            <tr>
+              <td>GENDER:</td>
+              <td>
+                <input
+                  id="female"
+                  type="radio"
+                  name="gender"
+                  value="f"
+                  required
+                />
+                <label for="female">Female</label>
+                <input id="male" type="radio" name="gender" value="m" />
+                <label for="male">Male</label>
+              </td>
+            </tr>
+            <tr>
+              <td>ADDRESS:</td>
+              <td>
+                <textarea rows="4" cols="40" id="comments" required></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>CITY:</td>
+              <td>
+                <input
+                  type="text"
+                  name="city"
+                  size="30"
+                  maxlength="30"
+                  placeholder="Enter your city name"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>PIN CODE:</td>
+              <td>
+                <input
+                  type="text"
+                  name="pin"
+                  size="30"
+                  maxlength="6"
+                  pattern="[0-9]{6}"
+                  title="6 digits pin code"
+                  placeholder="Enter pin code"
+                  required
+                />
+                (6 digits number)
+              </td>
+            </tr>
+            <tr>
+              <td>STATE:</td>
+              <td>
+                <input
+                  type="text"
+                  name="state"
+                  size="30"
+                  maxlength="30"
+                  placeholder="Enter your state name"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>COUNTRY:</td>
+              <td>
+                <input
+                  type="text"
+                  name="COUNTRY"
+                  size="30"
+                  maxlength="30"
+                  placeholder="Enter your country name"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>QUALIFICATION</td>
+              <td>
+                <table width="600px" height="100px">
+                  <tr>
+                    <th>S.No</th>
+                    <th>Examination</th>
+                    <th>Board</th>
+                    <th>Percentage</th>
+                    <th>Year of Passing</th>
+                  </tr>
+                  <tr>
+                    <td>1.</td>
+                    <th>Class X</th>
+                    <td><input type="text" name="boardX" required /></td>
+                    <td>
+                      <input
+                        type="text"
+                        name="percentageX"
+                        pattern="^\d{1,2}(\.\d{1,2})?$"
+                        title="Enter valid percentage (e.g., 89.76)"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        name="yearX"
+                        min="1990"
+                        max="2024"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                    <td>1.</td>
+                    <th>Class X</th>
+                    <td><input type="text" name="boardX" required /></td>
+                    <td>
+                      <input
+                        type="text"
+                        name="percentageX"
+                        pattern="^\d{1,2}(\.\d{1,2})?$"
+                        title="Enter valid percentage (e.g., 89.76)"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        name="yearX"
+                        min="1990"
+                        max="2024"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                    <td>1.</td>
+                    <th>Class XII</th>
+                    <td><input type="text" name="boardX" required /></td>
+                    <td>
+                      <input
+                        type="text"
+                        name="percentageX"
+                        pattern="^\d{1,2}(\.\d{1,2})?$"
+                        title="Enter valid percentage (e.g., 89.76)"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        name="yearX"
+                        min="1990"
+                        max="2024"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                    <td>1.</td>
+                    <th>Bacheler</th>
+                    <td><input type="text" name="boardX" required /></td>
+                    <td>
+                      <input
+                        type="text"
+                        name="percentageX"
+                        pattern="^\d{1,2}(\.\d{1,2})?$"
+                        title="Enter valid percentage (e.g., 89.76)"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        name="yearX"
+                        min="1990"
+                        max="2024"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                    <td>1.</td>
+                    <th>Masters</th>
+                    <td><input type="text" name="boardX" required /></td>
+                    <td>
+                      <input
+                        type="text"
+                        name="percentageX"
+                        pattern="^\d{1,2}(\.\d{1,2})?$"
+                        title="Enter valid percentage (e.g., 89.76)"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        name="yearX"
+                        min="1990"
+                        max="2024"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <!-- More education fields -->
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>COURSES:</td>
+              <td>
+                <input
+                  id="BCA"
+                  type="radio"
+                  name="COURSES"
+                  value="BCA"
+                  required
+                />
+                <label for="BCA">BCA</label>
+                <input id="B.Com" type="radio" name="COURSES" value="B.Com" />
+                <label for="B.Com">B.Com</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
